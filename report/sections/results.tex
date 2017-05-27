@@ -1,0 +1,124 @@
+\subsection{Result}
+
+\subsubsection{Supervised model}
+\textcolor{red}{Previous version of the report contains the incorrect measurements, they were compared using the SemEval2017-Task3-CQA-QL-dev-subtaskA.xml.subtaskA.pred file instead of the SemEval2017-Task3-CQA-QL-dev-subtaskA.xml.subtaskA.relevancy file.}
+\medbreak
+All the methods above described were tested using the file \textbf{SemEval2016-Task3-CQA-QL-dev-subtaskA.xml}. The statistics were computed with the provided scorer. Tables from \ref{1_1_1} to \ref{1_3} show the results.
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of \textbf{counting per thread} encoding method using inverse manhattan similarity}
+\label{1_1_1}
+\begin{tabular}{c|c}
+MAP & 0.4558   \\\hline
+AvgRec &   0.6441 \\\hline
+MRR &  53.08 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of \textbf{counting per thread} encoding method using cosine similarity}
+\label{1_1_2}
+\begin{tabular}{c|c}
+MAP & 0.4457   \\\hline
+AvgRec &  0.6452 \\\hline
+MRR &  50.01 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of \textbf{tfidf per thread} encoding method using inverse manhattan similarity}
+\label{1_2_1}
+\begin{tabular}{c|c}
+MAP & 0.4625   \\\hline
+AvgRec &  0.6521 \\\hline
+MRR &  53.40 
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of \textbf{tfidf per thread} encoding method using cosine similarity}
+\label{1_2_2}
+\begin{tabular}{c|c}
+MAP & 0.4592   \\\hline
+AvgRec &  0.6448 \\\hline
+MRR &  51.44 
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of \textbf{global tfidf} encoding method}
+\label{1_3}
+\begin{tabular}{c|c}
+MAP & 0.5384   \\\hline
+AvgRec &  0.7278 \\\hline
+MRR &  63.13 
+\end{tabular}
+\end{table}
+
+\subsubsection{Unsupervised model}
+A FFNN with two hidden layers was configured. Different configuration of features and hyperparameters were tested. File \textbf{SemEval2016-Task3-CQA-QL-train-part1-subtaskA.xml} was used as training. Likewise, file \textbf{SemEval2016-Task3-CQA-QL-dev-subtaskA.xml} was use as test set in order to computed the statistics using the provided scorer. Tables from \ref{f1} to \ref{f2} show the results.
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of FFNN classifier with no n limitations (the whole bag of words as input) and length of comment and flesh score as extra features}
+\label{f1}
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{Layer 1} & \textbf{Layer 2} & \textbf{Layer 3} &  \textbf{Epochs} & \textbf{Batch size} & F1 score\\\hline
+12 &8 &1& 150& 10& 0.3264\\\hline
+200& 50& 1& 50& 10&  0.4273
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of FFNN classifier with no n limitations (the whole bag of words as input) and length of comment, flesh score and bag of words using encoding 1 as extra features}
+\label{f2}
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{Layer 1} & \textbf{Layer 2} & \textbf{Layer 3} &  \textbf{Epochs} & \textbf{Batch size} & F1 score\\\hline
+12 &8 &1 &50 &10 & 0.3096\\\hline
+30 &10& 1 &70& 10 & 0.4611\\\hline
+30 &10& 1 &150& 10 & 0.4487\\\hline
+400 &100& 1 &50 &10& 0.4779
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Result of FFNN classifier with no n (no bag of words as input) and length of comment, flesh score, links and bag of words using encoding 1 as features}
+\label{f3}
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{Layer 1} & \textbf{Layer 2} & \textbf{Layer 3} &  \textbf{Epochs} & \textbf{Batch size} & F1 score\\\hline
+12 &8& 1& 50& 10 & 0.1750
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of FFNN classifier with n=5000 and length of comment, flesh score, links and bag of words using encoding 2 as features}
+\label{f4}
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{Layer 1} & \textbf{Layer 2} & \textbf{Layer 3} &  \textbf{Epochs} & \textbf{Batch size} & F1 score\\\hline
+30&10&1&70&10 & 0.4369\\\hline
+30&10&1&150&10 & 0.4457
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of FFNN classifier with n=10000 and length of comment, flesh score, links and bag of words using encoding 2 as features}
+\label{f5}
+\begin{tabular}{c|c|c|c|c|c}
+\textbf{Layer 1} & \textbf{Layer 2} & \textbf{Layer 3} &  \textbf{Epochs} & \textbf{Batch size} & F1 score\\\hline
+30&10&1&150&10 & 0.5128\\\hline
+30&10&1&70&10 & 0.4956\\\hline
+30&5&1&150&10 & 0.3585
+\end{tabular}
+\end{table}

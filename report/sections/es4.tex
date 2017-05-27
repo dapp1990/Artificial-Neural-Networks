@@ -1,0 +1,76 @@
+\subsection{Stacked autoencoders}
+After analyzed \textbf{DigitClassification.m} script, several experiments were run. Tables \ref{table_sec_4_1} and \ref{table_sec_4_2} show the results of different models with different hyperparameters.
+\bigbreak
+All the models could beat the original one (second column in table \ref{table_sec_4_1}) but the model with third hidden layers (seventh column in table \ref{table_sec_4_1}) before the fined-tuning. However after the fined-tuning, the DeppNets could not overcome the original setting. Even the best model (fifth column in table \ref{table_sec_4_1}) was not able to perform better.
+\bigbreak
+Three interesting remark are noticed. The model with best results after fined-tuning took around 7 minutes per run. That is a significant amount of time compared with the other models, even the second best model before fined-tuning (sixth column in table \ref{table_sec_4_1}) took around 3 minutes per run. This is a extensive impact in the time complexity of the overall model where the gain was relatively small (1.03). Is really it a good tradeoff between time and accuracy?. It precisely depends on the application, for instance in applications where the accuracy is highly important such as the health-care sector.
+\bigbreak
+However, this tradeoff between time and accuracy can be easily solved using the fined-tuning phase. Clearly the results shown that the fined-tuning phase improve all models, even the worst model that used 3 hidden layers. It was completely not expected that the accuracy of the models improved to beat even the FFNN. Fined-tuning phase has shown that is an important phase in order to improve, even in the worst cases, the accuracy of the model.
+\bigbreak
+Finally, after fined-tuning all the models beat the FFNN with 1 and 2 layers. However the overall performance are not bad whatsoever. Reaching an average of 96.94 and 96.45, FFNN has shown that it is a very powerful as well as a simple model. As aforementioned, FFNN can be implemented in many applications that do not require heavy critical decision.
+\begin{table}[!htbp]
+\centering
+\caption{Results of DeepNet before fined-tuning. (\# layer, max epochs, hidden units)}
+\label{table_sec_4_1}
+\medbreak
+\begin{tabular}{c|c|c|c|c|c|c}
+ & \pbox{4cm}{1, 400, 100\\2, 100, 50} & \pbox{4cm}{1, 400, 100\\2, 400, 50} & \pbox{4cm}{1, 100, 100\\2, 400, 50} & \pbox{4cm}{1, 400, 400\\2, 100, 200} & \pbox{4cm}{1, 400, 200\\2, 100, 100} & \pbox{4cm}{1, 400, 100\\2, 100, 50\\3, 50, 25}\\\hline
+1 & 86.72 & 94.16 & 91.28 & 99.18 & 98.24 & 28.84\\\hline
+2 & 81.18 & 94.70 & 93.12 & 99.02 & 97.76 & 29.80\\\hline
+3 & 89.16 & 95.36 & 93.70 & 98.32 & 97.84 & 13.68\\\hline
+4 & 78.66 & 93.88 & 92.26 & 98.82 & 97.92 & 17.18\\\hline
+5 & 82.48 & 92.62 & 91.94 & 98.90 & 97.34 & 17.18\\\hline
+\textbf{Avg} & \textbf{83.64} & \textbf{94.14} & \textbf{92.46} & \textbf{98.85} & \textbf{97.82} & \textbf{21.34} 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Results of DeepNet after fined-tuning. (\# layer, max epochs, hidden units)}
+\label{table_sec_4_2}
+\medbreak
+\begin{tabular}{c|c|c|c|c|c|c}
+ & \pbox{4cm}{1, 400, 100\\2, 100, 50} & \pbox{4cm}{1, 400, 100\\2, 400, 50} & \pbox{4cm}{1, 100, 100\\2, 400, 50} & \pbox{4cm}{1, 400, 400\\2, 100, 200} & \pbox{4cm}{1, 400, 200\\2, 100, 100} & \pbox{4cm}{1, 400, 100\\2, 100, 50\\3, 50, 25}\\\hline
+1 & 99.68 & 98.96 & 99.52 & 99.48  &98.86 & 99.24\\\hline
+2 & 99.76 & 98.92& 99.52 & 99.56 & 98.88 & 99.30\\\hline
+3 & 99.80 & 99.06& 99.52 & 99.10 & 98.36 & 99.32\\\hline
+4 & 99.78 & 98.72& 99.54 & 99.20 & 98.04 & 99.32 \\\hline
+5 & 99.72 & 98.86 & 99.72 & 99.32 & 99.00 & 99.32\\\hline
+\textbf{Avg} & \textbf{99.75} & \textbf{98.90} & \textbf{99.56} & \textbf{99.33} & \textbf{98.64} & \textbf{99.30} 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Results using a FFNN.}
+\label{table_sec_4_3}
+\medbreak
+\begin{tabular}{c|c|c}
+1 hidden layer & 2 hidden layers \\\hline
+1 & 97.02 & 95.84 \\\hline
+2 & 96.64 & 97.52 \\\hline
+3 & 96.28 & 97.26  \\\hline
+4 & 96.28 & 97.26 \\\hline
+5 & 97.80 & 94.42 \\\hline
+\textbf{Avg} & \textbf{96.94} & \textbf{96.45}
+\end{tabular}
+\end{table}
+
+
+\subsection{Convolutional neural networks}
+\textbf{What do these weights represent?}
+\smallbreak
+Hence those weights represent the stack of filtered images. 
+\bigbreak
+\textbf{What is the dimension of the input at the start of layer 6 and why?}
+\smallbreak
+The previous layer 5 is a MaxPooing layer. It was found that the \textit{PoolSize} was set to 3x3 pixels and \textit{Stride} to 2x2. For each filtered image in the stack, it reduces the input size from 11x11x3 to 5x5x3. According with the MatLab Documentation \cite{matlab_1}, the attribute \textit{NumChannels} represents the feature maps. In this documentation they states that this input value corresponds to the number of filters in the previous convolutional layer. In this case the number of filter of layer 2 are 96. Hence, the input must take into account the shrunk filtered image by the numbers of filters. The input for layer 6 is of 4 dimensions [5,5,3,96], the same dimensionality than the output of layer 2. An interesting observation is that actually the \textit{NumChannels}  parameter of layer 6 is a vector of [48,48] and not an integer value of 96. According with \cite{matlab_1} this cannot be set manually as a vector, it must be a integer value. I assumed the filters are split due to the CrossChannelNormalizationLayer and Matlab internally accepts that type of input for Layer 6.
+\bigbreak
+\textbf{What is the final dimension of the problem? How does this compare with the initial dimension?}
+\smallbreak
+According with the ClassificationOutputLayer, it contains a single vector (1 dimension) that contains 1000 of neurons. The initial dimension was [227,227,3] which gives us a total of 154,587 elements. The reduction clearly is significant, the initial input was reduced roughly 155 times.
+
+
+

@@ -1,0 +1,81 @@
+Lecture 1• Explain the difference between digital computers, neural networks and the human brain.
+• Explain how neural networks are used within ALVINN. 
+
+
+Lecture 2• Explain similarities and differences between multi layer perceptron (MLP) and radial basis function (RBF) networks.
+
+Both use the concept of input layer, output layer and hidden layer (possible multiple hidden layers) and weights for the links among the neurons.
+
+The main difference is the activation function they use. RBF networks uses (only one hidden layer!!! and does not linear transformation), as the named suggested, a radial basis functions, where the absolute different between the input and the center (Euclidean distances between input and weights) is used as an input for the activation function, typically a Gaussian radial basis function is used, the output is a scalar function of the input vector. MLP networks, in addition to the concepts before mentioned, has a threshold vector, the "bias vector", and uses s dot products between inputs and weights; the activation functions depends on the specific application, a linear characterisation is often chosen (sigmoidal or tanh activation function).
+
+"You may use RBF networks in case you do not necessarily need to have multiple hidden layers in your model and more importantly, you want your model to be robust to adversarial noise/examples. The advantage of RBF networks is they bring much more robustness to your prediction, but as mentioned earlier they are more limited compared to commonly-used types of neural networks. However, commonly-used types of neural network models are highly vulnerable to adversarial noise and can make very wrong predictions when fed with such examples as their inputs. This is not the case in RBF networks which seems to be due to their non-linear nature of these networks. So it is a trade-off between higher accuracy in commonly-used types of neural networks or higher robustness in radial-basis function networks." http://stats.stackexchange.com/questions/190552/when-to-use-rbf-networks-instead-of-multilayer-percetron
+
+
+"MLP: uses dot products (between inputs and weights) and sigmoidal activation functions (or other monotonic functions such as ReLU) and training is usually done through backpropagation for all layers (which can be as many as you want). This type of neural network is used in deep learning with the help of many techniques (such as dropout or batch normalization);
+RBF: uses Euclidean distances (between inputs and weights, which can be viewed as centers) and (usually) Gaussian activation functions (which could be multivariate), which makes neurons more locally sensitive. Thus, RBF neurons have maximum activation when the center/weights are equal to the inputs (look at the image below). Due to this property, RBF neural networks are good for novelty detection (if each neuron is centered on a training example, inputs far away from all neurons constitute novel patterns) but not so good at extrapolation. Also, RBFs may use backpropagation for learning, or hybrid approaches with unsupervised learning in the hidden layer (they usually have just 1 hidden layer). Finally, RBFs make it easier to grow new neurons during training." http://ai.stackexchange.com/questions/227/what-is-the-difference-between-mlp-and-rbf/1287
+• What are advantages or disadvantages of multilayer perceptrons versus polynomial expansions?
+
+In certain conditions, the MLP avoid the course of dimensionality, the approximation error becomes independent from the input space. Of course those condition must be hold which makes the MLP not always a good approximation.
+• Explain the backpropagation algorithm.
+
+we ffed the Neuronal Network with the input, where each wight is initialise at certain value. There exists a delta function which update the wights of the the Neuronal Network according with the MSE (Means Square Error). The objective is find the Minimum E (cost function) for the given input and the desire output.
+
+Forward propagation of input patterns.
+Backward propagation of errors and δ variables.
+
+• What is the difference between on-line learning and off-line learningwith backpropagation?
+
+On-line learning setting update the weights every time after a new pattern is presented while off-line learning setting update the weights until all the training patterns are presented.
+
+• What are the limitations of a perceptron?
+
+The perceptron cannot solve non-liner separable problems.
+
+• What does Cover’s theorem tell us about linear separability?
+
+For larger d (dimension) it becomes likely that more dichotomies are linearly separable.
+
+Assign randomly points to classes C1,C2 with equal probability. Each possible assignment for the complete data set is called a dichotomy. For N points there are 2^N possible dichotomies.
+
+
+"The theorem states that given a set of training data that is not linearly separable, one can with high probability transform it into a training set that is linearly separable by projecting it into a higher-dimensional space via some non-linear transformation."
+
+
+• Explain the Newton and Levenberg-Marquardt learning of neural networks.
+Newton : second order approximation, creates a second degree gradient which is use to get the next minimum point. Problem is that it can turn out that be are increasing rather than decreasing. (https://www.youtube.com/watch?v=28BMpgxn_Ec). It is faster than a first order approximation due to the quadratic function.
+
+Levenberg-Marquardt :- second order approaximation, taken the newton learnign but with an extra constrains of ||∆x||_2 = 1, which give us an extra parameter in λI
+
+• Explain quasi-Newton learning of neural networks.
+quasi-Newton : seems that here we are not using or computing the hassian matrix, we approaximat it insteand.
+• Explain conjugate gradient learning of neural networks.
+
+• What is the role of a regularization term?
+
+• What is overfitting? How can this be avoided?
+
+• What is the effective number of parameters?
+
+
+
+Lecture 5
+Explain the Occam’s razor principle.
+"Preference for simple models", which menas that if there are several models for the same dataset, choose the one that is the least complex model.  The principal follows two principal reasonings:
+aesthetic -> "A theory with mathematical beauty is more likely to be correct than an ugly on that fits some experimental data" (Paul Dirac)
+supposed success of Occam's razor -> coherent inference embodies Occam's razor automatically and quantitatively.
+
+
+• What is the difference between parameters and hyperparameters whentraining multilayer perceptrons?
+parameters are are the weights/connection and bias of the multilayer perceptron, making the parameter vector W. They are used in phase 1 where we assume a model X be true, which is use to infer W
+
+hyperparameters are the control parameters (alpha and beta) that determine the complexity of the model (where model implies three assumptions: network architecture, form of prior parameters and for of the noise model). They are used in phase 2
+• What is the role of the prior distribution in Bayesian learning of neural networks?
+The role of the prior distribution is encode our beliefs of certain model before the data is taken into account for the learning process.
+• What is the difference between the number of parameters and the effective number of parameters?
+
+• How does one characterize uncertainties on predictions in a Bayesian learning framework?
+The uncertanties are characterise by the so-called Errors Bar.
+
+
+Lecture 6• What is the working principle of associative memories from a dynamical systems point of view?• What is the Hebb rule for storing patterns in associative memories and why does it work?• What is the role of an energy function for associative memories?• What determines the storage capacity in associative memories?• When solving the TSP problem using a Hopfield network, how are cities and a tour being represented?2
+Lecture 7• How can one do dimensionality reduction using linear principal com- ponent analysis and nonlinear principal component analysis?• What is the reconstruction problem in principal component analysis?• Explain the working principle of Oja’s learning rule.• What is the aim of vector quantization?• How is vector quantization related to self-organizing maps?Lecture 8• How can a multilayer perceptron be used for time-series prediction?• How can one use neural networks in different model structures for sys-tem identification?• Explain the use of dynamic backpropagation.• Explain the use of neural networks for control applications.Lecture 9• What are advantages of support vector machines in comparison with classical multilayer perceptrons?• What is the kernel trick in support vector machines?• What is a support vector?• What is a primal and a dual problem in support vector machines?Lecture 10• Give motivations for considering the use of more hidden layers in mul- tilayer feedforward neural networks.• Explain the pre-training and fine-tuning steps when combining an au- toencoder with a classifier.• What are possible difficulties for training deep networks?• Explain stacked autoencoders.

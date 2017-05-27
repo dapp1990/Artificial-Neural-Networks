@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\graphicspath{{./graphics/}}
+\usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{geometry}
+\usepackage{todonotes}
+\geometry{tmargin=3cm, bmargin=3cm, lmargin=2.5cm, rmargin=2.5cm}
+\usepackage[toc,page]{appendix}
+\usepackage{subfiles}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage[multiple]{footmisc}
+\usepackage{csquotes}
+\usepackage{subfig}
+\usepackage{multirow}
+\usepackage{pbox}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{hyperref}
+
+
+
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+\begin{document}
+\setlength\parindent{0pt}
+
+\input{sections/titlepage}
+
+\tableofcontents
+\newpage
+\listoffigures
+\listoftables
+
+\newpage
+\section{S1: Supervised learning and generalization}
+\input{sections/es1}
+
+\newpage
+\section{S2: Recurrent neural networks}
+\input{sections/es2}
+
+\newpage
+\section{S3: Unsupervised learning: PCA and SOM}
+\input{sections/es3}
+
+\newpage
+\section{S4: Deep Learning: stacked autoencoders and convolutional Neural networks}
+\input{sections/es4}
+
+\newpage
+\section{Final project}
+\input{sections/final_project}
+
+
+\newpage
+\appendix
+\section{Code: Nonlinear regression}
+\input{appendix/code_1}
+\section{Code: Classification}
+\input{appendix/code_2}
+\section{Code: Character recognition with Hopfield networks}
+\input{appendix/code_3}
+\bibliographystyle{siam}
+\bibliography{references}
+
+\end{document}
