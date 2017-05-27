@@ -1,7 +1,7 @@
 \subsection{Principal Component Analysis}
-The PCA algorithm was implemented using the Matlab functions provided in the exercise document. Figure \ref{3_333} shows the mean of the whole data set as well as the first element and its corresponding reconstructed vector using different k. Figures in \ref{eigenvqlues_plot} shows the eigenvalues of the components and the reconstruction error using different k values.
+The PCA algorithm was implemented using the Matlab functions provided in the exercise document. Figure \ref{3_333} shows the mean of the whole data set as well as the first element and its corresponding reconstructed vector using different k components. Figure  \ref{eigenvqlues_plot} shows the eigenvalues of the components and the reconstruction error using different k values.
 \bigbreak
-Comparing figures in \ref{eigenvqlues_plot}, there exists a relation between the reconstruction error and the eigenvalues. This implies that the number of k components directly influence the quality of the reconstruction. This can be verified on figure  \ref{3_333}, the reconstructed image from k=1 to k=2 clearly shows an aggresive improvement.
+Comparing figures in \ref{eigenvqlues_plot}, there exists a relation between the reconstruction error and the eigenvalues. This implies that the number of k components directly influence the quality of the reconstruction. This can be verified in figure  \ref{3_333}, the reconstructed image from k=1 to k=2 clearly shows an aggressive improvement.
 
 \begin{figure}[!htbp]
 \caption{Left: Image of the mean vector of the whole data set. Right: Image of the first element of the dataset with different reconstructions.}
@@ -32,13 +32,10 @@ Comparing figures in \ref{eigenvqlues_plot}, there exists a relation between the
 
 
 \subsection{Competitive learning with SOM's}
-Figure \ref{som_cylinder} shows the results of different experiment in \textbf{SOM\_concentric\_cylinders.m} script. The model used a hexagonal topology with a grid size of 5x5x5. \textit{Link distance} (linkdist) and \textit{Manhattan distance} (mandist) were tested with different epochs. 
+Figure \ref{som_cylinder} shows the results of different experiment in \textbf{SOM\_concentric\_cylinders.m} script. The model used an hexagonal topology with a grid size of 5x5x5. \textit{Link distance} (linkdist) and \textit{Manhattan distance} (mandist) were tested with different epochs. 
 \bigbreak
-It is concluded that the \textit{linkdist} simulates a better cylinder shape (making it a heavily connected graph) than the \textit{mandist}.
+It is concluded that the \textit{linkdist} simulates a better cylinder shape (with a heavily connected graph) than the \textit{mandist}.
 \bigbreak
-Figure \ref{panel_22} shows some results of different experiment in \textbf{example\_SOM\_iris.m} script. The model used different topologies and grid size of 10x10. \textit{Link distance} (linkdist) and \textit{Manhattan distance} (mandist) were tested with equal amount of epochs (100).
-\bigbreak
-A remark conclusion is that hexagonal topology shows a smoother topology than the grid topology. Additionally \textit{linkdist} gives harder limits on the decision surface than \textit{mandist} as shown in figure \ref{panel_22}.
 \begin{figure}[!htbp]
 \caption{Top: Trajectory of the neurons using Manhattan distance. Bottom: Trajectory of the neurons using Link distance.}
 \label{som_cylinder}
@@ -68,6 +65,9 @@ A remark conclusion is that hexagonal topology shows a smoother topology than th
 \centering
 \end{figure}
 
+Figure \ref{panel_22} shows some results of different experiment in \textbf{example\_SOM\_iris.m} script. The model used different topologies and grid size of 10x10. \textit{Link distance} (linkdist) and \textit{Manhattan distance} (mandist) were tested with equal amount of epochs (100).
+\bigbreak
+A remark conclusion is that hexagonal topology shows a smoother topology than the grid topology. Additionally \textit{linkdist} gives harder limits on the decision surface than \textit{mandist} as shown in figure \ref{panel_22}.
 
 \begin{figure}[!htbp]
 \caption{Top: Plots of SOM using grid topology and \textit{linkdist}. Middle: Plots of SOM using hexagonal topology and \textit{linkdist}. Bottom: Plots of SOM using hexagonal topology and \textit{mandist}.}

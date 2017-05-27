@@ -1,9 +1,9 @@
 \subsection{Hopfield networks}
 Extreme cases of the noise parameter and number of iterations were tested on the \textit{hopdigit} example. Figures \ref{sec2_2} to \ref{sec2_3} show the results of 4 extreme experiments.
 \bigbreak
-Results in figures \ref{sec2_2} and \ref{sec2_4} show unstable states due to the limited number of iterations during the process. Hence the results did not converge. Nevertheless, the unstable states are relatively \textit{closed} to the stable states shown in figures \ref{sec2_1} and \ref{sec2_4}.
+Results in figures \ref{sec2_2} and \ref{sec2_4} show unstable states due to the limited number of iterations during the process. Hence the results did not converge. Nevertheless, the unstable states are relatively \textit{closed} to the stable states shown in figures \ref{sec2_1} and \ref{sec2_3}.
 \bigbreak
-Results in figures \ref{sec2_1} and \ref{sec2_3} after a bigger amount of iterations. It is clear that the noise (which implies the initial position of the input) affects the final result, a bigger noise (bigger distance from the target attractor) results in an unexpected result, as shown in figure \ref{sec2_3}.
+Results in figures \ref{sec2_1} and \ref{sec2_3} show stable states after a bigger amount of iterations. It is clear that the noise (which implies the initial position of the input) affects the final result, a bigger noise (bigger distance from the target attractor) results in an unexpected result, as shown in figure \ref{sec2_3}.
 \bigbreak
 After an exhaustive iteration, no spurious states were found. 
 \begin{figure}[!htbp]
@@ -39,7 +39,7 @@ After an exhaustive iteration, no spurious states were found.
 
 \newpage
 
-\subsection{Elman network}
+\subsection{Elman networks}
 Several experiments were done using different training points, epochs and neurons. To avoid a straightforward conclusion, three iterations per setup were run. Table \ref{s2_t1} shows the results.
 \bigbreak
 This experiments suggests that the number of neurons is a critical hyperparameter in the Helman network. There is a correlation between the recall and the neurons. There is a clearly negative effect when the number of neurons are increased. The number of epochs and training points increase the Recall and decrease the MSE in all the settings.
