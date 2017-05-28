@@ -1,3 +1,4 @@
+\subsection{Main code}
 \begin{lstlisting}[frame=single]
 clear;
 clc;
@@ -114,8 +115,7 @@ for P=1:35
                 inner_counter = inner_counter + 1;
             end
         end
-    end
-    
+    end   
     spurious_by_p = [spurious_by_p (inner_counter/100)];
     erro_by_p = [erro_by_p mean(err)];
 end
@@ -134,7 +134,7 @@ for i=1:10
     set(gca,'xtick',[],'ytick',[]);
 end
 
-% Theoretical Heb-rule
+% Theoretical Hebb-rule
 figure;
 Xs = 1:size(X,2);
 sig = sqrt(Xs/size(X,1));
@@ -163,13 +163,11 @@ for i=1:t_length
     end
 end
 
-
 randIdx = randperm(1000);
 t_set = training_set(:,randIdx(1:800));
 validation_set = Target(:,randIdx(1:800));
 test_set = training_set(:,randIdx(801:end));
 ground_truth =  Target(:,randIdx(801:end));
-
 
 net1=feedforwardnet(10,'trainlm');
 
@@ -197,11 +195,37 @@ for i=1:5
     axis image;
     set(gca,'xtick',[],'ytick',[]);
 
-
     subplot(3,5,i);
     colormap(gray);
     imagesc(reshape(ground_truth(:,i),5,7)',[0,1]);
     axis image;
     set(gca,'xtick',[],'ytick',[]);
+end
+\end{lstlisting}
+
+
+\subsection{lowercase.m}
+\begin{lstlisting}[frame=single]
+function [ out ] = lowercase
+%danielprz
+letterd =  [0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 1 1 0 0 0 1 1 0 0 0 1 0 1 1 1 1 ]';
+
+lettera =  [0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 1 0 0 1 0 1 0 0 1 0 0 1 1 1 1 ]';
+
+lettern =  [0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 1 1 0 0 0 1 1 0 0 0 1 1 0 0 0 1 ]';
+
+letteri =  [0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 0 ]';
+
+lettere =  [0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 1 1 1 1 1 0 0 0 0 1 0 0 0 0 0 1 1 1 0 ]'; 
+        
+letterl =  [0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 1 1 0 ]';
+
+letterp =  [1 1 1 0 0 1 0 0 1 0 1 0 0 1 0 1 1 1 1 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 ]';    
+        
+letterr =  [0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 ]';
+        
+letterz =  [0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 1 1 1 1 ]';
+        
+out = [letterd,lettera,lettern,letteri,lettere,letterl,letterp,letterr,letterz];
 end
 \end{lstlisting}
