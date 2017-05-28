@@ -60,7 +60,7 @@ The PCA algorithm was implemented using the code of section \textbf{S3}. Differe
 \centering
 \end{figure}
 
-A final experiment was set, now using the lower dimension data set. In order to have big picture of the different k values and different FFNN models, all the combinations were run. Figure \ref{final_3_3} shows the results. It was noticed that k=3, although it was showed as a good value for PCA, was not necessary the best value. k between 5 and 6 performs better, depending on the number of neurons in the hidden layer.
+A final experiment was assessed, now using the lower dimension data set. In order to have big picture of the different k values and different FFNN models, all the combinations were run. Figure \ref{final_3_3} shows the results. It was noticed that k=3, although it was showed as a good value for PCA, was not necessary the best value. k between 5 and 6 performs better, depending on the number of neurons in the hidden layer.
 \bigbreak
 \begin{figure}[!htbp]
 \caption{Results of the classification tasks using different number of neurons}
@@ -78,7 +78,6 @@ As warm-up task, the required letters were created and added to the vocabulary. 
 \begin{figure}[!htbp]
 \caption{Set of letter in the dataset (attractors)}
 \label{all_letter}
-\medbreak
 \includegraphics[width=\textwidth/2]{final/all_letters}
 \centering
 \end{figure}
@@ -88,7 +87,6 @@ In order to tested the accuracy of the Hopfield network, 10,000 iterations were 
 \begin{figure}[!htbp]
 \caption{Top: original letter (attractor state). Middle: distorted letter by 3 pixeles. Bottom: reconstruction using the Hopfield network.}
 \label{final_3_1}
-\medbreak
 \includegraphics[width=\textwidth/2]{final/tasks_2}
 \centering
 \end{figure}
@@ -99,7 +97,6 @@ After the initial experiment, different values of P were tested with 100 epochs.
 \begin{figure}[!htbp]
 \caption{Average of absolute error and number of spurious patterns found with different P values.}
 \label{spurious_error_state}
-\medbreak
 \includegraphics[width=0.8\textwidth]{final/spurious_error_state}
 \centering
 \end{figure}
@@ -111,13 +108,13 @@ After the initial experiment, different values of P were tested with 100 epochs.
 \includegraphics[width=0.9\textwidth]{final/teoretical_hebb}
 \centering
 \end{figure}
-\bigbreak
+
 An alternative to overcome this downside of the Hopfield network can be a simple, yet powerful, FFNN. In fact, a FFNN was implemented with one hidden layer  using the default settings and 10 neurons in the hidden layer and 35 neurons in the output layer. A dataset of 1,000 samples was created. 80\% of samples were used as training test and validation test and the rest was used as test set. The overall CCR of the FFNN was 96.71\%. Figure \ref{neural_network_35_ouputs} shows the results of the first 5 predictions.
-\bigbreak
+
 \begin{figure}[!htbp]
 \caption{Top: Original letter. Middle: distorted letter by 3 pixeles. Bottom: prediction of the FFNN.}
 \label{neural_network_35_ouputs}
-\medbreak
 \includegraphics[width=0.5\textwidth]{final/neural_network_35_ouputs}
 \centering
 \end{figure}
+
